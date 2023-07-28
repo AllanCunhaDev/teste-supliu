@@ -7,7 +7,8 @@ import { ButtonFind } from "../buttons/buttonDashboard";
 import { InputFind } from "../inputs/inputDashboard";
 import { ModalAdicionar } from "../modal/modalAddAlbum";
 import { ContainerDashboard } from "./styleDashboard";
-import { Tracks } from "../tracks/track";
+
+
 
 export const Dashboard = () => {
   const {modal,setModal, filterAlbuns, setFilterAlbuns} = useContext(AlbumContext);
