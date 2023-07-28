@@ -1,11 +1,10 @@
 import { InputFindStyle } from "./inputStyle";
 
-export const InputFind = () => {
+export const InputFind = ({id,onChange,value,type,placeholder}:any) => {
   return (
     <InputFindStyle>
-      <legend>Digite uma palavra chave : </legend>
       <label htmlFor="find"> </label>
-      <input />
+      <input id={id} type={type} placeholder={placeholder} value={value} onChange={onChange}/>
     </InputFindStyle>
   );
 };

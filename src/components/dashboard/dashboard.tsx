@@ -7,9 +7,10 @@ import { ButtonFind } from "../buttons/buttonDashboard";
 import { InputFind } from "../inputs/inputDashboard";
 import { ModalAdicionar } from "../modal/modalAddAlbum";
 import { ContainerDashboard } from "./styleDashboard";
+import { Tracks } from "../tracks/track";
 
 export const Dashboard = () => {
-  const {modal,setModal} = useContext(AlbumContext);
+  const {modal,setModal, filterAlbuns, setFilterAlbuns} = useContext(AlbumContext);
 
   return (
     <>
@@ -24,12 +25,12 @@ export const Dashboard = () => {
 
           <div className="container_albuns">
             <div className="container_find">
-              <InputFind />
-              <ButtonFind type="button">Procurar</ButtonFind>
+              <InputFind id="btnFind" type="text" value={filterAlbuns} onChange={(e: any) => setFilterAlbuns(e.target.value)}  placeholder="Busque seu álbum aqui"/>
+              <ButtonFind id="btnFind" type="button" >Procurar</ButtonFind>
             </div>
 
             <div className="album">
-              <Albuns />
+              <Albuns/>
             </div>
             <div className="div_btn_add">
               <BtnAddAlbum onClick={()=> setModal(true)}>Adicionar novo Album +</BtnAddAlbum>

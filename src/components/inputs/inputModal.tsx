@@ -1,10 +1,10 @@
-import { InputFindStyle } from "./inputStyle";
 
-export const InputModal = (id, label, placeholder,type, name, ...register) => {
+export const InputModal = ({id, label, placeholder,type, name, ...register}:any) => {
   return (
-    <InputFindStyle>
-      <label htmlFor={id}></label>
+
+      <>
       <input type={type} id={id} placeholder={placeholder} name={name} {...register} />
-    </InputFindStyle>
+      </>
+  
   );
 };

@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AlbumContext } from "../../providers/AlbumContext";
 import { BtnModal } from "../buttons/buttonModalAdd";
-import { InputModal } from "../inputs/inputModal";
 import { DivContainerModal } from "./styleModalAdd";
 
 export const ModalAdicionar = () => {
@@ -10,7 +9,7 @@ export const ModalAdicionar = () => {
 
   const { handleSubmit, reset, register } = useForm();
 
-  const handle = (param) => {
+  const handle = (param : any) => {
     console.log(param);
     createAlbum(param);
     reset();
@@ -20,21 +19,18 @@ export const ModalAdicionar = () => {
     <DivContainerModal>
       <form onSubmit={handleSubmit(handle)} noValidate>
         <div>
-          <InputModal
+          <input
             id="name"
-            name="name"
             {...register("name")}
             type="text"
             placeholder="Titulo do Album"
-          ></InputModal>
-          <InputModal
+          ></input>
+          <input
             id="year"
-            name="year"
             {...register("year")}
             type="number"
-            label="Ano"
             placeholder="ano"
-          ></InputModal>
+          ></input>
           <div>
             <BtnModal type="submit">
               {loading ? "Enviando..." : "Enviar"}

@@ -57,7 +57,7 @@ z-index: 999;
     & > .container_albuns{
         height: 81%;
 
-        overflow: hidden;
+        overflow: auto;
 
         padding: 20px;
 

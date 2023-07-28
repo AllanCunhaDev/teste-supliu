@@ -3,7 +3,9 @@ import styled from "styled-components";
 
 const ButtonFind = styled.button`
 width: 20%;
-height: 40%;
+height: 60%;
+
+font-size: 12px;
 
 border-radius: 16px;
 

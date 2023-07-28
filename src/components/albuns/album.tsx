@@ -1,47 +1,40 @@
 import { useContext } from "react";
 import { AlbumContext } from "../../providers/AlbumContext";
 import { BtnDeleteAlbum } from "../buttons/buttonDeleteAlbum";
-
+import { Tracks } from "../tracks/track";
 
 export const Albuns = () => {
-
-  const { setAlbuns, setDelAlbum} = useContext(AlbumContext);
-
-  // console.log(setAlbuns)
+  const { albuns, deleteAlbum, filterAlbuns } =
+    useContext(AlbumContext);
 
   return (
     <div>
-      <span>Album:{setAlbuns.name}</span>
-            <div>
-              <div>
-                <p>Nº : </p>
-              </div>
-              <div>
-                <p>Faixa : {}</p>
-                <p>Duração : {}</p>
-              </div>
-            </div>
       <ul>
-        {/* {setAlbuns.map((album) => (
-          <li key={album.id}>
-            <span>Album:{album.name}</span>
-            <div>
-              <div>
-                <p>Nº : </p>
-              </div>
-              <div>
-                <p>Faixa : {}</p>
-                <p>Duração : {}</p>
-              </div>
-            </div>
-          </li>
-        ))} */}
+        {albuns?.map((album: any) => {
+          if (
+            !filterAlbuns ||
+            album.name.toLowerCase().includes(filterAlbuns.toLocaleLowerCase().trim())
+          ) {
+            return (
+              <li key={album.id}>
+                <span>
+                  Álbum : {album.name}, {album.year}
+                </span>
+                <BtnDeleteAlbum
+                  onClick={() => {
+                    deleteAlbum(album.id);
+                  }}
+                >
+                  .
+                </BtnDeleteAlbum>
+              </li>
+            );
+          } else {
+            return null;
+          }
+        })}
       </ul>
-      <BtnDeleteAlbum onClick={()=> {
-        setDelAlbum(true)
-        setAlbuns()
-        console.log(BtnDeleteAlbum)
-      }}>.</BtnDeleteAlbum>
+      <Tracks/>
     </div>
   );
 };
