@@ -2,16 +2,21 @@ import { useContext } from "react";
 import { TrackContext } from "../../providers/TracksContext";
 
 export const Tracks = () => {
-  const { tracks} = useContext(TrackContext);
+  const { tracks } = useContext(TrackContext);
   console.log(tracks);
   return (
-    <>
-      <ul>
-        {tracks?.map((tracks: any) => {
-          <li key={tracks.id}>
+    <div>
+      {tracks === 0 ? (
+        <div>
+          <p>Sem faixas nesse Álbum.</p>
+          <button>Adicionar faixas +</button>
+        </div>
+      ) : (
+        <ul>
+          <li key={tracks}>
             <div>
-              <p>Nº : {tracks.number}</p>
-              <p>Faixa : {tracks.title}</p>
+              <p>Nº : </p>
+              <p>Faixa : {tracks}</p>
               <p>Duração</p>
               <p>excluir</p>
               <p>numero Qtd</p>
@@ -19,9 +24,12 @@ export const Tracks = () => {
               <p>min</p>
               <button>lixeira</button>
             </div>
-          </li>;
-        })}
-      </ul>
-    </>
+          </li>
+          {/* {tracks?.map((tracks: any) => {
+                
+              })} */}
+        </ul>
+      )}
+    </div>
   );
 };

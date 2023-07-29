@@ -58,6 +58,10 @@ z-index: 999;
         height: 81%;
 
         overflow: auto;
+        &::-webkit-scrollbar {
+            width: 10px;
+
+        }
 
         padding: 20px;
 

@@ -2,23 +2,22 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AlbumContext } from "../../providers/AlbumContext";
 import { BtnModal } from "../buttons/buttonModalAdd";
-import { DivContainerModal } from "./styleModalAdd";
+import { DivContainerModal, FormModalStyle } from "./styleModalAdd";
 
 export const ModalAdicionar = () => {
   const { setModal, createAlbum, loading } = useContext(AlbumContext);
 
   const { handleSubmit, reset, register } = useForm();
 
-  const handle = (param : any) => {
-    console.log(param);
+  const handle = (param: any) => {
     createAlbum(param);
     reset();
   };
 
   return (
     <DivContainerModal>
-      <form onSubmit={handleSubmit(handle)} noValidate>
-        <div>
+      <FormModalStyle onSubmit={handleSubmit(handle)} noValidate>
+        <div className="container_inputs_modalAdd">
           <input
             id="name"
             {...register("name")}
@@ -29,16 +28,16 @@ export const ModalAdicionar = () => {
             id="year"
             {...register("year")}
             type="number"
-            placeholder="ano"
+            placeholder="Ano do Album"
           ></input>
-          <div>
+          <div className="container_btns_add">
+            <BtnModal onClick={() => setModal(false)}>Cancelar</BtnModal>
             <BtnModal type="submit">
               {loading ? "Enviando..." : "Enviar"}
             </BtnModal>
-            <BtnModal onClick={() => setModal(false)}>Cancelar</BtnModal>
           </div>
         </div>
-      </form>
+      </FormModalStyle>
     </DivContainerModal>
   );
 };

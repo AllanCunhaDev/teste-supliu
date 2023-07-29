@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
 
 interface iAlbuns {
-    id?: number,
+    id?: number | any,
     name: string,
     year: number,
     tracks: [],

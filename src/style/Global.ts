@@ -46,7 +46,7 @@ button{
 }
 
 :root{
-
+--color-pureBlack:#000;
 --color-pureWithe: #ffff;
 --color-letters: #5b5b58;
 --color-buttons: #4169e1;

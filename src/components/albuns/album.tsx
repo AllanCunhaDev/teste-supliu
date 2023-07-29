@@ -1,25 +1,27 @@
 import { useContext } from "react";
+import { iAlbuns } from "../../interfaces/interfaceAlbumContext";
 import { AlbumContext } from "../../providers/AlbumContext";
 import { BtnDeleteAlbum } from "../buttons/buttonDeleteAlbum";
 import { Tracks } from "../tracks/track";
+import { DivContainerListAlbunsStyle } from "./styleAlbuns";
 
 export const Albuns = () => {
-  const { albuns, deleteAlbum, filterAlbuns } =
-    useContext(AlbumContext);
+  const { albuns, deleteAlbum, filterAlbuns } = useContext(AlbumContext);
 
   return (
     <div>
       <ul>
-        {albuns?.map((album: any) => {
+        {albuns?.map((album: iAlbuns) => {
           if (
             !filterAlbuns ||
-            album.name.toLowerCase().includes(filterAlbuns.toLocaleLowerCase().trim())
+            album.name.toLowerCase().includes(filterAlbuns.toLowerCase().trim())
           ) {
             return (
-              <li key={album.id}>
+              <DivContainerListAlbunsStyle key={album.id}>
                 <span>
                   Álbum : {album.name}, {album.year}
                 </span>
+                <Tracks/>
                 <BtnDeleteAlbum
                   onClick={() => {
                     deleteAlbum(album.id);
@@ -27,14 +29,13 @@ export const Albuns = () => {
                 >
                   .
                 </BtnDeleteAlbum>
-              </li>
+              </DivContainerListAlbunsStyle>
             );
           } else {
             return null;
           }
         })}
       </ul>
-      <Tracks/>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 
 const DivContainerModal = styled.div`
@@ -16,18 +16,60 @@ padding-bottom: 200px;
 
 display: flex;
 align-items: center;
-justify-content: center;
+justify-content: center;    
 
-animation: modal 1,0s;
+`;
 
-@keyframes modal {
-    from{
-        transform: translate(100%);
-    }
-    to{
-        transform: translate(0%);
-    }
-}
+const FormModalStyle = styled.form`
+width: 50%;
+height: 30%;
+margin: 0 auto;
+        &>.container_inputs_modalAdd{
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            &> input{
+                width: 25%;
+                height: 38.45px;
+                margin-top: 20px;
+                padding:0 10px;
+                
+
+                border-radius: 16px;
+                border: 1px solid var(--color-pureBlack);
+                &:focus{
+                    border: none;
+                    
+                }
+            }
+            &>.container_btns_add{
+            width: 100%;
+            height: 50%;
+
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+
+            }
+        }
 
 `
-export { DivContainerModal };
+const test = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
+const Frames =  styled(FormModalStyle)`
+animation: ${test} 750ms;
+`
+export { DivContainerModal, FormModalStyle, Frames };
+

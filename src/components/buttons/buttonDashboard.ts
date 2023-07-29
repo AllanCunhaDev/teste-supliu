@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-const ButtonFind = styled.button`
+const ButtonAddAlbum = styled.button`
 width: 20%;
 height: 60%;
 
@@ -11,5 +11,8 @@ border-radius: 16px;
 
 color: var(--color-pureWithe);
 background-color: var(--color-buttons);
+&:hover{
+    background-color: var(--color-pureBlack);
+}
 `
-export { ButtonFind };
+export { ButtonAddAlbum };
