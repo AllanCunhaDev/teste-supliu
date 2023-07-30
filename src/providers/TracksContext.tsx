@@ -14,8 +14,7 @@ const TrackProvider = ({ children }: iPropsTracks) => {
   const createTracks = async (track : iTrack)=>{
     try {
       setLoadingTracks(true);
-      const response = await Api.post("/track",track,{
-        params: {track},
+      const response = await Api.post("/track", track,{
         headers: {
           Authorization: token,
           "Content-Type": "application/json",

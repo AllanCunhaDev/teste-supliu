@@ -8,9 +8,11 @@ interface iTrack {
     duration: number;
 
 }
+
 interface iTrackTableProps {
     tracks: iTrack[];
 }
+
 interface iTrackResponse {
     tracks: any | []
     setTracks: React.Dispatch<React.SetStateAction<never[]>>

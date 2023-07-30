@@ -25,6 +25,8 @@ interface iAlbumContextData {
     deleteAlbum: (id: number) => Promise<void>
     filterAlbuns: string
     setFilterAlbuns: React.Dispatch<React.SetStateAction<string>>
+    albumId: any
+    setAlbumId: React.Dispatch<React.SetStateAction<any>>
 }
 
 export type { iAlbumContextData, iAlbuns, iProps }

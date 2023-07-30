@@ -12,6 +12,7 @@ export const AlbumProvider = ({ children }: iProps) => {
   const [loading, setLoading] = useState(false);
   const [modal, setModal] = useState(false);
   const [filterAlbuns, setFilterAlbuns] = useState("");
+  const [albumId, setAlbumId] = useState();
 
   const createAlbum = async (album: any) => {
     try {
@@ -90,7 +91,9 @@ export const AlbumProvider = ({ children }: iProps) => {
         setModal,
         deleteAlbum,
         filterAlbuns,
-        setFilterAlbuns
+        setFilterAlbuns,
+        albumId,
+        setAlbumId,
       }}
     >
       {children}

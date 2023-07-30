@@ -58,6 +58,41 @@ margin: 0 auto;
 
             }
         }
+        &>.container_track_inputs{
+          width: 100%;
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            &> input{
+              width: 25%;
+                height: 38.45px;
+                margin-top: 20px;
+                padding:0 10px;
+                
+
+                border-radius: 16px;
+                border: 1px solid var(--color-pureBlack);
+                
+                &:focus {
+                outline: none;
+                box-shadow: 0px 0px 2px var(--color-buttons);
+              }
+            }
+            &> .container_btn_add_track{
+            width: 100%;
+            height: 50%;
+
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+
+            }
+        }
 
 `
 const test = keyframes`

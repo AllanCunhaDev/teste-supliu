@@ -1,12 +1,18 @@
 import { useContext } from "react";
 import { iAlbuns } from "../../interfaces/interfaceAlbumContext";
 import { AlbumContext } from "../../providers/AlbumContext";
+import { TrackContext } from "../../providers/TracksContext";
 import { BtnDeleteAlbum } from "../buttons/buttonDeleteAlbum";
+import { AddTrackModal } from "../modal/modalAddTrack";
 import { Tracks } from "../tracks/track";
 import { DivContainerListAlbunsStyle } from "./styleAlbuns";
 
 export const Albuns = () => {
-  const { albuns, deleteAlbum, filterAlbuns } = useContext(AlbumContext);
+  const { albuns, deleteAlbum, filterAlbuns, setAlbumId } =
+    useContext(AlbumContext);
+
+  const { modalTracks, setModalTracks } = useContext(TrackContext);
+
   return (
     <div>
       <ul>
@@ -33,10 +39,17 @@ export const Albuns = () => {
                 {album.tracks.length === 0 ? (
                   <div>
                     <p>Sem faixas nesse Álbum.</p>
-                    <button>Adicionar faixas +</button>
+                    <button
+                      onClick={() => (
+                        setAlbumId(album.id), setModalTracks(true)
+                      )}
+                      id={album.id}
+                    >
+                      Adicionar faixas +
+                    </button>
                   </div>
                 ) : (
-                  <Tracks tracks={album.tracks}/>
+                  <Tracks tracks={album}/>
                 )}
               </DivContainerListAlbunsStyle>
             );
@@ -45,6 +58,7 @@ export const Albuns = () => {
           }
         })}
       </ul>
+      {modalTracks ? <AddTrackModal /> : <></>}
     </div>
   );
 };
