@@ -7,7 +7,6 @@ import { DivContainerListAlbunsStyle } from "./styleAlbuns";
 
 export const Albuns = () => {
   const { albuns, deleteAlbum, filterAlbuns } = useContext(AlbumContext);
-
   return (
     <div>
       <ul>
@@ -18,17 +17,27 @@ export const Albuns = () => {
           ) {
             return (
               <DivContainerListAlbunsStyle key={album.id}>
-                <span>
-                  Álbum : {album.name}, {album.year}
-                </span>
-                <Tracks/>
-                <BtnDeleteAlbum
-                  onClick={() => {
-                    deleteAlbum(album.id);
-                  }}
-                >
-                  .
-                </BtnDeleteAlbum>
+                <div className="container_name_album_trash">
+                  <span>
+                    Álbum : {album.name}, {album.year}
+                  </span>
+
+                  <BtnDeleteAlbum
+                    onClick={() => {
+                      deleteAlbum(album.id);
+                    }}
+                  >
+                    Limpar álbum
+                  </BtnDeleteAlbum>
+                </div>
+                {album.tracks.length === 0 ? (
+                  <div>
+                    <p>Sem faixas nesse Álbum.</p>
+                    <button>Adicionar faixas +</button>
+                  </div>
+                ) : (
+                  <Tracks tracks={album.tracks}/>
+                )}
               </DivContainerListAlbunsStyle>
             );
           } else {

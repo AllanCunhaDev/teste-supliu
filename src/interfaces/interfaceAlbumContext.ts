@@ -16,7 +16,7 @@ interface iProps {
 
 interface iAlbumContextData {
     albuns: any
-    setAlbuns: React.Dispatch<React.SetStateAction<undefined>>
+    setAlbuns: React.Dispatch<React.SetStateAction<any>>
     loading: boolean
     setLoading: React.Dispatch<React.SetStateAction<boolean>>
     modal: boolean

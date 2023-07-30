@@ -1,20 +1,19 @@
 import { AxiosResponse } from "axios";
 import { createContext, useEffect, useState } from "react";
 import { Api } from "../api/axios";
-import { iAlbumContextData, iProps } from "../interfaces/interfaceAlbumContext";
+import { iAlbumContextData, iAlbuns, iProps } from "../interfaces/interfaceAlbumContext";
 
 export const AlbumContext = createContext({} as iAlbumContextData);
 
 export const AlbumProvider = ({ children }: iProps) => {
   const token = "allancunha20@hotmail.com";
 
-  const [albuns, setAlbuns] = useState();
+  const [albuns, setAlbuns] = useState<iAlbuns[]>([]);
   const [loading, setLoading] = useState(false);
   const [modal, setModal] = useState(false);
   const [filterAlbuns, setFilterAlbuns] = useState("");
 
   const createAlbum = async (album: any) => {
-    console.log(album);
     try {
       setLoading(true);
       const response = await Api.post("/album", album, {
@@ -26,7 +25,6 @@ export const AlbumProvider = ({ children }: iProps) => {
       });
       setAlbuns(response.data);
       setModal(false);
-      console.log(response.data);
     } catch (error) {
       console.error("Erro em criar um novo:", error);
       throw error;
