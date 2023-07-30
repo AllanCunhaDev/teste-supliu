@@ -41,10 +41,11 @@ margin: 0 auto;
 
                 border-radius: 16px;
                 border: 1px solid var(--color-pureBlack);
-                &:focus{
-                    border: none;
-                    
-                }
+                
+                &:focus {
+                outline: none;
+                box-shadow: 0px 0px 2px var(--color-buttons);
+              }
             }
             &>.container_btns_add{
             width: 100%;
@@ -68,7 +69,7 @@ const test = keyframes`
   }
 `;
 
-const Frames =  styled(FormModalStyle)`
+const Frames = styled(FormModalStyle)`
 animation: ${test} 750ms;
 `
 export { DivContainerModal, FormModalStyle, Frames };

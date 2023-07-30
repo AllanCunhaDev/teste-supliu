@@ -36,6 +36,7 @@ export const Dashboard = () => {
             {modal ? <ModalAdicionar/> : <></>}
         </div>
       </ContainerDashboard>
+      
     </>
   );
 };

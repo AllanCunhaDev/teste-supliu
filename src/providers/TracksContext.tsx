@@ -21,8 +21,8 @@ const TrackProvider = ({ children }: iPropsTracks) => {
           "Content-Type": "application/json",
         },
       });
-      setTracks(response.data);
-      console.log(response.data);
+      setTracks(response.data.tracks);
+      console.log(response.data.tracks);
     } catch (error) {
       console.error("Erro na requisição:", error);
       throw error;

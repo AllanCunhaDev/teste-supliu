@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { TrackContext } from "../../providers/TracksContext";
 
 const AddTrackModal = () => {
-  const { tracks, createTracks, loadingTracks, setModalTracks } =
+  const { createTracks, loadingTracks, setModalTracks } =
     useContext(TrackContext);
 
   const { handleSubmit, reset, register } = useForm();
@@ -15,7 +15,6 @@ const AddTrackModal = () => {
 
   return (
     <div>
-      <h3>Adicionar Nova Faixa</h3>
       <form onSubmit={handleSubmit(handle)}>
         <label>
           Número da Faixa:

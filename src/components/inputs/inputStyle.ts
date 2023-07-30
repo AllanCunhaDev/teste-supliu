@@ -14,8 +14,13 @@ align-items: center;
 
         border-radius: 16px;
         border: 1px solid var(--color-pureBlack);
+        
+        &:focus {
+        outline: none;
+        box-shadow: 0px 0px 2px var(--color-buttons);
+        }
     }
-
+    
 
 `
 export { InputFindStyle };
