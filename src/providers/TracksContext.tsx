@@ -21,7 +21,26 @@ const TrackProvider = ({ children }: iPropsTracks) => {
         },
       });
       setTracks(response.data.tracks);
-      console.log(response.data.tracks);
+      setModalTracks(false);
+    } catch (error) {
+      console.error("Erro na requisição:", error);
+      throw error;
+    }finally{
+      setLoadingTracks(false);
+    }
+  }
+
+  const deleteTracks = async (id:number)=>{
+    setLoadingTracks(true)
+    try {
+      const response = await Api.delete(`/track/${id}`,{
+        headers: {
+          Authorization: token,
+          "Content-Type": "application/json",
+        },
+      });
+      setTracks(response.data);
+      console.log(response.data);
     } catch (error) {
       console.error("Erro na requisição:", error);
       throw error;
@@ -39,7 +58,8 @@ const TrackProvider = ({ children }: iPropsTracks) => {
         setLoadingTracks,
         createTracks,
         modalTracks,
-        setModalTracks
+        setModalTracks,
+        deleteTracks,
       }}
     >
       {children}

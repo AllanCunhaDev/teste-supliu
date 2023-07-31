@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { TrackContext } from "../../providers/TracksContext";
+import { BtnAddTracks } from "../buttons/buttonAddTracks";
 import { DivTracksStyle } from "./styleTracks";
 
 export const Tracks = ({tracks}: any) => {
-  const { setModalTracks } = useContext(TrackContext);
-  const albumId = tracks.id
+  const { deleteTracks } = useContext(TrackContext);
 
   return (
     <DivTracksStyle>
@@ -15,25 +15,22 @@ export const Tracks = ({tracks}: any) => {
             <th>Faixa: </th>
             <th>Duração: </th>
             <th>
-              <button
-                id={albumId}
-                onClick={() => (setModalTracks(true))}
-              >
-                Adicionar nova Faixa
-              </button>
+            <BtnAddTracks tracks={tracks}/>
             </th>
           </tr>
         </thead>
         <tbody>
           {tracks.tracks.map((tracksParam: any) => (
+
             <tr key={tracksParam.id}>
               <td>{tracksParam.number}</td>
               <td>{tracksParam.title}</td>
               <td>{tracksParam.duration}min</td>
               <td>
                 {" "}
-                <button>Lixeira</button>
+                <button onClick={()=>deleteTracks(tracksParam.id)}>lixeira</button>
               </td>
+             
             </tr>
           ))}
         </tbody>

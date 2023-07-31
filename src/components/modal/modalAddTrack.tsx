@@ -21,7 +21,6 @@ const AddTrackModal = () => {
   };
 
   const handle = (param: any) => {
-    console.log(param);
     newTrack = {
       album_id: Number(albumId),
       number: Number(param.number),
@@ -29,7 +28,6 @@ const AddTrackModal = () => {
       duration: Number(param.duration),
     };
     createTracks(newTrack);
-    console.log(newTrack);
     reset();
   };
 
